@@ -28,13 +28,21 @@ public class PlayerColloision : MonoBehaviour {
         }
         
         // collision with PowerUps
-        if (collision.gameObject.tag == "PowerUpTag") {
-            //print("PowerUp");
+        if (collision.gameObject.tag == "BoostTag") {
+            print("Boost");
             PlayerMovement playerMov = this.gameObject.GetComponent<PlayerMovement>();
             playerMov.Boost();
             
             Destroy(collision.gameObject,0);
         }
+
+		if (collision.gameObject.tag == "PowerUpTag") {
+			print("PowerUp");
+			PlayerMovement playerMov = this.gameObject.GetComponent<PlayerMovement>();
+			playerMov.PowerPlus();
+
+			Destroy(collision.gameObject,0);
+		}
         
         
     }
