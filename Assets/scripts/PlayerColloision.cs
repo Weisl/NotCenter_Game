@@ -7,8 +7,6 @@ public class PlayerColloision : MonoBehaviour {
     // Use this for initialization
     
     void Start () {
-
-        
 	}
 	
 	// Update is called once per frame
@@ -25,6 +23,12 @@ public class PlayerColloision : MonoBehaviour {
         if (collision.gameObject.tag == "ObstacleTag"){
             //print("tot");
             Destroy(this.gameObject);
+
+			// stop camera
+			CameraMovement cam = Camera.main.gameObject.GetComponent<CameraMovement>();
+			cam.stopCamera();
+			// print Highscore
+			HighScoreCalculator.printScore();
         }
         
         // collision with PowerUps
@@ -32,7 +36,7 @@ public class PlayerColloision : MonoBehaviour {
             print("Boost");
             PlayerMovement playerMov = this.gameObject.GetComponent<PlayerMovement>();
             playerMov.Boost();
-            
+
             Destroy(collision.gameObject,0);
         }
 
