@@ -8,11 +8,17 @@ public class PlayerMovement : MonoBehaviour {
     public float slowingFactor = 1.001f;
     public float currentSpeed = 0f;
     public float boostFactor = 2f;
+	public int maxCameraDst = 15;
+	public int maxZDist = 10; 
 
 	private Vector3 cameraPos;
 	public int InitialPowerUps = 2;
 
 	private int powerUps = 0;
+
+	void Destroy (){
+		
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -22,13 +28,21 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		this.cameraPos = Camera.main.gameObject.transform.position;
-
         this.currentSpeed = (this.currentSpeed / this.slowingFactor);
             
-		//if ()
+		float cameraPosX = this.cameraPos.x;
+		//float cameraPosZ = this.cameraPos.z;
+
+		if (this.gameObject.transform.position.x > cameraPosX + this.maxCameraDst) {
+			this.gameObject.transform.position = new Vector3 (cameraPosX + this.maxCameraDst,this.gameObject.transform.position.y , this.gameObject.transform.position.z );
+		}
+
+		if (this.gameObject.transform.position.z > maxZDist || this.gameObject.transform.position.z < -maxZDist) {
+			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x, this.gameObject.transform.position.y, -this.gameObject.transform.position.z);
+		}
 
 		if (currentSpeed > 0){
-            print("Speed " + currentSpeed);
+            //print("Speed " + currentSpeed);
             transform.Translate(this.currentSpeed * Time.deltaTime,0,0);
         }
 
@@ -50,6 +64,8 @@ public class PlayerMovement : MonoBehaviour {
 				Boost ();
 			}
 		} 
+
+
 	}
 
 
