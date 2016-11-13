@@ -3,17 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class RandomGenerate3000 : MonoBehaviour {
-
-	public int seed = 0;
-
+    
     public List<GameObject> obstaclelist;
     public GameObject powerUp;
 	public GameObject boostObject;
-    
-	public float sizeMin = 1;
-	public float sizeMax = 1.5f;
+    public int objectsLivespan = 8;
 
-	public int objectsLivespan = 8;
+	public int seed = 0;
 
     public float obstacleRate = 3.0f;
     public float powerUpRate = 10.0f;
@@ -45,19 +41,19 @@ public class RandomGenerate3000 : MonoBehaviour {
         if ( this.obPrevTime > obCurrentTime) { 
             this.cameraPos = Camera.main.gameObject.transform.position;
             GameObject obstacle = obstaclelist[Random.Range(0, obstaclelist.Count)];
-			spawnObj(obstacle,-15.0f, 15.0f, 30.0f, 35.0f, this.objectsLivespan, sizeMin,sizeMax); 
+            spawnObj(obstacle,-15.0f, 15.0f, 30.0f, 35.0f, this.objectsLivespan); 
             
         }
         // Power spawn 
         if (this.powerPrevTime > powerCurrentTime){
             this.cameraPos = Camera.main.gameObject.transform.position;
-			spawnObj(this.powerUp ,-15.0f, 15.0f, 30.0f, 35.0f, this.objectsLivespan, sizeMin,sizeMax);        
+            spawnObj(this.powerUp ,-15.0f, 15.0f, 30.0f, 35.0f, this.objectsLivespan);        
         }
         
         // Boost spawn 
         if (this.boostPrevTime > boostCurrentTime){
 			this.cameraPos = Camera.main.gameObject.transform.position;
-			spawnObj (this.boostObject, -15.0f, 15.0f, 30.0f, 35.0f, this.objectsLivespan, sizeMin,sizeMax);
+			spawnObj (this.boostObject, -15.0f, 15.0f, 30.0f, 35.0f, this.objectsLivespan);
         }
         
         
@@ -67,13 +63,13 @@ public class RandomGenerate3000 : MonoBehaviour {
 	
 	}
     
-	private void spawnObj (GameObject obj, float randomXMin, float randomXMax, float cameraDistMin, float cameraDistMax, int livespan, float sizeMin, float sizeMax){
+    private void spawnObj (GameObject obj, float randomXMin, float randomXMax, float cameraDistMin, float cameraDistMax, int livespan){
              
         float zPos = Random.Range(randomXMin, randomXMax);
         float xPos = cameraPos.x + Random.Range(cameraDistMin, cameraDistMax);
         
-        GameObject assignedObj = Instantiate(obj, new Vector3 (xPos, 0,zPos), Quaternion.identity) as GameObject; 
-		Destroy(assignedObj, livespan);        
+        GameObject assignedObj = Instantiate(obj, new Vector3 (xPos, 0,zPos), Quaternion.identity) as GameObject;
+        Destroy(assignedObj, livespan);        
     }
 
 	public void getSeed(int seed){
