@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class RandomGenerate3000 : MonoBehaviour {
 
-	public int seed = 0;
+  	public int seed = 0;
 
     public List<GameObject> obstaclelist;
     public GameObject powerUp;
@@ -27,7 +28,9 @@ public class RandomGenerate3000 : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
-		Random.seed = this.seed;
+        //PseudoRandom
+       // this.seed = Random.seed;
+
 	}
 
 
@@ -76,10 +79,10 @@ public class RandomGenerate3000 : MonoBehaviour {
 		Destroy(assignedObj, livespan);        
     }
 
-	public void getSeed(int seed){
+	public void setSeed(int seed){
 		this.seed = seed;
 	}
-	public int setSeed(){
+	public int getSeed(){
 		return this.seed;
 	}    
 }

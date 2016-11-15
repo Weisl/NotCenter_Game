@@ -27,7 +27,9 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.cameraPos = Camera.main.gameObject.transform.position;
+
+        //World Movement
+        this.cameraPos = Camera.main.gameObject.transform.position;
         this.currentSpeed = (this.currentSpeed / this.slowingFactor);
             
 		float cameraPosX = this.cameraPos.x;
@@ -49,6 +51,9 @@ public class PlayerMovement : MonoBehaviour {
         //float xPost = this.gameObject.position.x % 25;
         //this.gameObject.transform.position = new Vector3 (xPost, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
         
+
+
+        //Controls 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(0, 0, (sideSpeed * Time.deltaTime));

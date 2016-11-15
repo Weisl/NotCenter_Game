@@ -14,7 +14,7 @@ public class PlayerColloision : MonoBehaviour {
     }
 
     void OnDestroy(){
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+       
     }
 
     void OnTriggerEnter(Collider collision)
@@ -22,6 +22,7 @@ public class PlayerColloision : MonoBehaviour {
         // collisions with obstacles
         if (collision.gameObject.tag == "ObstacleTag"){
             //print("tot");
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
 
 			// stop camera
