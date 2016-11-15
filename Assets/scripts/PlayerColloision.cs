@@ -4,6 +4,7 @@ using System.Collections;
 
 public class PlayerColloision : MonoBehaviour {
     public GameObject explosionPrefab;
+    public GameObject Game_UI;
     // Use this for initialization
     
     void Start () {
@@ -14,7 +15,7 @@ public class PlayerColloision : MonoBehaviour {
     }
 
     void OnDestroy(){
-       
+              
     }
 
     void OnTriggerEnter(Collider collision)
@@ -23,13 +24,15 @@ public class PlayerColloision : MonoBehaviour {
         if (collision.gameObject.tag == "ObstacleTag"){
             //print("tot");
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            GameUI ui = Game_UI.GetComponent<GameUI>();
+            ui.startEndScreen();
             Destroy(this.gameObject);
 
 			// stop camera
 			CameraMovement cam = Camera.main.gameObject.GetComponent<CameraMovement>();
 			cam.stopCamera();
 			// print Highscore
-			HighScoreCalculator.printScore();
+			//HighScoreCalculator.printScore();
         }
         
         // collision with PowerUps

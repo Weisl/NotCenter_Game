@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class keepAlive : MonoBehaviour {
 
 
     public GameObject alive;
 
-    void Awake()
+
+    void Start()
     {
               
         DontDestroyOnLoad(alive);
     }
 
-   
+
 }

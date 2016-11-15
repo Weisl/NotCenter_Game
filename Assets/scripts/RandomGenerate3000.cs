@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class RandomGenerate3000 : MonoBehaviour {
 
   	public int seed = 0;
-    public GameObject UI_Obj;
+    
     UI_Logic log;
 
     public List<GameObject> obstaclelist;
@@ -30,22 +30,24 @@ public class RandomGenerate3000 : MonoBehaviour {
     
     
     // Use this for initialization
-    void Awake () {
-        //PseudoRandom
-        // this.seed = Random.seed;
-
-
+    void Start () {
+        
+        getSeedFromOldScene();
+    }
+    
+    void getSeedFromOldScene()
+    {
         //LOAD THIS WHEN SCENE IS LOADED
+        GameObject UI_Obj = GameObject.FindGameObjectWithTag("UI");
         log = UI_Obj.GetComponent<UI_Logic>();
-        if(log != null)
+        if (log != null)
         {
             print("inside");
             seed = log.getCurrentSeed();
         }
-    
-        print(seed);
-	}
+        print("New Seed: " + seed);
 
+    }
 
     // Update is called once per frame
     void Update() {

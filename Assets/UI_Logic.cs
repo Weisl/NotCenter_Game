@@ -6,24 +6,40 @@ using System;
 
 public class UI_Logic : MonoBehaviour {
 
-    int currentSeed;
+    static int currentSeed = 0;
     public InputField userSeed;
     public Button randomButton;
     public Button displayButton;
+    public GameObject UI_Manager;
   
 
 
     void Start()
     {
+        //UI
         Button rndBtn = randomButton.GetComponent<Button>();
         rndBtn.onClick.AddListener(createRandomNumber);
 
         InputField usrSeed = userSeed.GetComponent<InputField>();
         usrSeed.onValueChanged.AddListener(delegate { getUserSeed(); });
-    }
 
-    public void changetoScene (int sceneNumber)
+        //Transfer Stuff
+        DontDestroyOnLoad(UI_Manager);
+
+
+        //Display Seed
+        if(currentSeed == 0)
+        {
+            createRandomNumber();
+        }
+        updateDisplay();
+    }
+        
+    //Load Level
+    public void changetoScene(int sceneNumber)
     {
+        print("Seed in old scene: " + currentSeed);
+            
         SceneManager.LoadScene(sceneNumber);
     }
 
@@ -40,6 +56,7 @@ public class UI_Logic : MonoBehaviour {
         updateDisplay();
     }
     
+    //Get User Input
     public void getUserSeed()
     {
        InputField usrSeed = userSeed.GetComponent<InputField>();
@@ -70,7 +87,7 @@ public class UI_Logic : MonoBehaviour {
             char letter = value[i];
             result = 10 * result + (letter - 48);
         }
-        print(result);
+       
         return result;
     }
 

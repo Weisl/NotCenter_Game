@@ -3,7 +3,6 @@ using System.Collections;
 
 public class HighScoreCalculator : MonoBehaviour {
 	private static float initialScore = 0;
-
 	// Use this for initialization
 	void Start () {	
 	}
@@ -14,18 +13,15 @@ public class HighScoreCalculator : MonoBehaviour {
 	}
 
 	private static float calculateScore(){
-		float score;
-		score = Time.time * 1;
-		return score;
-
+        return Time.timeSinceLevelLoad * 1;
 	} 
 
-	public static float getScore (){
+	public float getScore (){
 		return calculateScore();
 	}
 		
-	public static void printScore(){
-		float score = getScore();
-		print ("Score " + score);
+	public void printScore(){
+
+        print ("Score " + this.getScore());
 	}
 }
