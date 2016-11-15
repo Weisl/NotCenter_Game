@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.SceneManagement;
 
 public class RandomGenerate3000 : MonoBehaviour {
 
   	public int seed = 0;
+    public GameObject UI_Obj;
+    UI_Logic log;
 
     public List<GameObject> obstaclelist;
     public GameObject powerUp;
@@ -26,17 +28,29 @@ public class RandomGenerate3000 : MonoBehaviour {
     
     private Vector3 cameraPos;
     
+    
     // Use this for initialization
-    void Start () {
+    void Awake () {
         //PseudoRandom
-       // this.seed = Random.seed;
+        // this.seed = Random.seed;
 
+
+        //LOAD THIS WHEN SCENE IS LOADED
+        log = UI_Obj.GetComponent<UI_Logic>();
+        if(log != null)
+        {
+            print("inside");
+            seed = log.getCurrentSeed();
+        }
+    
+        print(seed);
 	}
 
 
     // Update is called once per frame
     void Update() {
-        
+
+    
         //print("Camera Position " + Camera.main.gameObject.transform.position);
         float cTime = Time.time;
         
