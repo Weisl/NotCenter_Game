@@ -1,12 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\RandomGenerate3000.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\PlayerMovement.cs">
     <Files>
-      <File FileName="Assets\scripts\RandomGenerate3000.cs" Line="75" Column="115" />
-      <File FileName="Assets\scripts\PlayerColloision.cs" Line="11" Column="2" />
-      <File FileName="Assets\scripts\PlayerMovement.cs" Line="70" Column="2" />
-      <File FileName="Assets\scripts\CameraMovement.cs" Line="17" Column="2" />
-      <File FileName="Assets\scripts\HighScoreCalculator.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\RandomGenerate3000.cs" Line="99" Column="49" />
+      <File FileName="Assets\scripts\PlayerColloision.cs" Line="42" Column="25" />
+      <File FileName="Assets\scripts\PlayerMovement.cs" Line="47" Column="4" />
+      <File FileName="Assets\scripts\CameraMovement.cs" Line="22" Column="4" />
+      <File FileName="Assets\scripts\HighScoreCalculator.cs" Line="9" Column="3" />
+      <File FileName="Assets\scripts\UI_Logic.cs" Line="19" Column="13" />
+      <File FileName="Assets\scripts\GameUI.cs" Line="58" Column="61" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

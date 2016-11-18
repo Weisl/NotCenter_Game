@@ -46,11 +46,16 @@ public class GameUI : MonoBehaviour {
 
     void printScore()
     {
+		
         GameObject highscore = GameObject.FindGameObjectWithTag("GameHandlerTag");
         HighScoreCalculator hsc = highscore.GetComponent<HighScoreCalculator>();
 
+		//Canvas canvas = Resources.Load ("Canvas_UI");
+		//Button hsb = Instantiate(Score_Button, transform.position, transform.rotation);
+		//hsb.transform.SetParent(canvas.transform, false);
         Button hsb = Score_Button.GetComponent<Button>();   
-        hsb.GetComponentInChildren<Text>().text = "Score: " + hsc.getScore();
+		print (hsc.getScore());
+		hsb.GetComponentInChildren<Text>().text = "Score: " + hsc.getScore();
 
     }
 

@@ -2,26 +2,21 @@
 using System.Collections;
 
 public class HighScoreCalculator : MonoBehaviour {
-	private static float initialScore = 0;
+	private float initialScore;
 	// Use this for initialization
 	void Start () {	
+		this.initialScore = 1;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-	
-	}
-
-	private static float calculateScore(){
-        return Time.timeSinceLevelLoad * 1;
-	} 
-
-	public float getScore (){
-		return calculateScore();
+		print ("Score " +  initialScore);
+		this.initialScore +=  1 * Time.deltaTime;
 	}
 		
-	public void printScore(){
 
-        print ("Score " + this.getScore());
+	public float getScore (){
+		return this.initialScore;
 	}
+
 }

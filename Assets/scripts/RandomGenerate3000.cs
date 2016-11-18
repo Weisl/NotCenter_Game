@@ -31,9 +31,12 @@ public class RandomGenerate3000 : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
-        
+
+    	    
         getSeedFromOldScene();
-    }
+		Random.seed = this.seed;
+    
+	}
     
     void getSeedFromOldScene()
     {
@@ -54,11 +57,13 @@ public class RandomGenerate3000 : MonoBehaviour {
 
     
         //print("Camera Position " + Camera.main.gameObject.transform.position);
-        float cTime = Time.time;
         
-        float obCurrentTime = cTime % obstacleRate;
-        float powerCurrentTime = cTime % powerUpRate;
-        float boostCurrentTime = cTime % boostRate;
+		float cTime = Time.time;
+		//print ("Time: " + cTime);
+        
+		float obCurrentTime = cTime  % obstacleRate;
+		float powerCurrentTime = cTime  % powerUpRate;
+		float boostCurrentTime = cTime  % boostRate;
         
         // Obstacle spawn
         if ( this.obPrevTime > obCurrentTime) { 

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CameraMovement : MonoBehaviour {
 	
@@ -17,7 +19,7 @@ public class CameraMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		print("Camera Speed" + this.currentSpeed);
+	//	print("Camera Speed" + this.currentSpeed);
 		if (this.stopped == false) {
 			this.currentSpeed = this.currentSpeed * velocityFactor;
 			transform.Translate (this.currentSpeed * Time.deltaTime, 0, 0);

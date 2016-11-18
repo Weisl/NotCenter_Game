@@ -45,16 +45,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GameUI.cs" />
-     <Compile Include="Assets\UI_Logic.cs" />
-     <Compile Include="Assets\keepAlive.cs" />
      <Compile Include="Assets\scripts\CameraMovement.cs" />
+     <Compile Include="Assets\scripts\GameUI.cs" />
      <Compile Include="Assets\scripts\HighScoreCalculator.cs" />
      <Compile Include="Assets\scripts\ObstacleMovement.cs" />
      <Compile Include="Assets\scripts\PlayerColloision.cs" />
      <Compile Include="Assets\scripts\PlayerMovement.cs" />
      <Compile Include="Assets\scripts\RandomGenerate3000.cs" />
-     <Compile Include="Assets\setUserSeed.cs" />
+     <Compile Include="Assets\scripts\UI_Logic.cs" />
+     <Compile Include="Assets\scripts\csv_highscore.cs" />
+     <Compile Include="Assets\scripts\keepAlive.cs" />
+     <Compile Include="Assets\scripts\setUserSeed.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

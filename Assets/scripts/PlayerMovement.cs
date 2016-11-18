@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
     public float defaultSpeed = 5f;
@@ -30,19 +32,26 @@ public class PlayerMovement : MonoBehaviour {
 
         //World Movement
         this.cameraPos = Camera.main.gameObject.transform.position;
-        this.currentSpeed = (this.currentSpeed / this.slowingFactor);
-            
+        
+		if (Time.timeSinceLevelLoad > 1) {
+			// make object slower
+//			this.currentSpeed = (this.currentSpeed / this.slowingFactor);
+			currentSpeed -= currentSpeed>defaultSpeed? 0.015f : 0.0015f;// (this.slowingFactor);
+		}            
 		float cameraPosX = this.cameraPos.x;
 		//float cameraPosZ = this.cameraPos.z;
+
 
 		if (this.gameObject.transform.position.x > cameraPosX + this.maxCameraDst) {
 			this.gameObject.transform.position = new Vector3 (cameraPosX + this.maxCameraDst,this.gameObject.transform.position.y , this.gameObject.transform.position.z );
 		}
 
+		// teleporter on border
 		if (this.gameObject.transform.position.z > maxZDist || this.gameObject.transform.position.z < -maxZDist) {
 			this.gameObject.transform.position = new Vector3 (this.gameObject.transform.position.x, this.gameObject.transform.position.y, -this.gameObject.transform.position.z);
 		}
 
+	
 		if (currentSpeed > 0){
             //print("Speed " + currentSpeed);
             transform.Translate(this.currentSpeed * Time.deltaTime,0,0);
@@ -80,7 +89,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 		
     public void Boost(){
-        currentSpeed = currentSpeed + boostFactor;
+		currentSpeed = Mathf.Min( 2*defaultSpeed,  currentSpeed + boostFactor);
     }
 }
 
