@@ -8,12 +8,22 @@ public class GameUI : MonoBehaviour {
 
     public Button Seed_Button;
     public Button Score_Button;
+    public Button Menu_Button;
+    private double score = 0;
 
     // Use this for initialization
     void Start () {
+        //Deactivate Buttons while in BG
+        Button hsb = Score_Button.GetComponent<Button>();
+        hsb.interactable = false;
 
-        
-	}
+        Button sb = Seed_Button.GetComponent<Button>();
+        sb.interactable = false;
+
+        Button mb = Seed_Button.GetComponent<Button>();
+        mb.interactable = false;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -37,6 +47,11 @@ public class GameUI : MonoBehaviour {
         printScore();
         printSeed();
 
+        //Activate MenuButton
+        Button mb = Seed_Button.GetComponent<Button>();
+        mb.interactable = true;
+
+        //Move Canvas to Front
         GameObject UI_Obj = GameObject.FindGameObjectWithTag("GAME_UI");
         Canvas c = UI_Obj.GetComponent<Canvas>();
         c.planeDistance = 10;
@@ -50,12 +65,16 @@ public class GameUI : MonoBehaviour {
         GameObject highscore = GameObject.FindGameObjectWithTag("GameHandlerTag");
         HighScoreCalculator hsc = highscore.GetComponent<HighScoreCalculator>();
 
-		//Canvas canvas = Resources.Load ("Canvas_UI");
-		//Button hsb = Instantiate(Score_Button, transform.position, transform.rotation);
-		//hsb.transform.SetParent(canvas.transform, false);
-        Button hsb = Score_Button.GetComponent<Button>();   
-		print (hsc.getScore());
-		hsb.GetComponentInChildren<Text>().text = "Score: " + hsc.getScore();
+
+        Button hsb = Score_Button.GetComponent<Button>();
+
+      
+
+        score = System.Math.Round(hsc.getScore(), 2);
+       
+		hsb.GetComponentInChildren<Text>().text = "Score: " + score;
+        hsb.interactable = true;
+
 
     }
 
@@ -66,15 +85,12 @@ public class GameUI : MonoBehaviour {
         UI_Logic log = UI_Obj.GetComponent<UI_Logic>();
         if (log != null)
         {
-            print("inside");
             seed = log.getCurrentSeed();
         }
         
         Button sb = Seed_Button.GetComponent<Button>();
         sb.GetComponentInChildren<Text>().text = "Seed: " + seed;
-
-       
-
+        sb.interactable = true;
     }
          
 }

@@ -5,6 +5,8 @@ using System.Collections;
 public class PlayerColloision : MonoBehaviour {
     public GameObject explosionPrefab;
     public GameObject Game_UI;
+    public Canvas StatsUI_Canvas;
+
     // Use this for initialization
     
     void Start () {
@@ -20,6 +22,12 @@ public class PlayerColloision : MonoBehaviour {
 
     void OnTriggerEnter(Collider collision)
     {
+
+        //Stop Score Counter
+        Canvas canvas = StatsUI_Canvas.GetComponent<Canvas>();
+        MystatsUI score_UI = canvas.GetComponent<MystatsUI>();
+        score_UI.stopScore();
+
         // collisions with obstacles
         if (collision.gameObject.tag == "ObstacleTag"){
             //print("tot");

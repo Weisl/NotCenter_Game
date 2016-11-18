@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
+
+   
     public float defaultSpeed = 5f;
    // public float rotationSpeed = 5f;
     public float sideSpeed = 5f;
@@ -17,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 	public int InitialPowerUps = 2;
 
 	private int powerUps = 0;
+
 
 	void Destroy (){
 		
@@ -83,9 +86,16 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 
+    public int getPowerUps()
+    {
+        return powerUps;
+    }
+
+
 
 	public void PowerPlus (){
 		this.powerUps += 1;
+
 	}
 		
     public void Boost(){

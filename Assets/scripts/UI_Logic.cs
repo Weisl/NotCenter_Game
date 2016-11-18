@@ -26,9 +26,9 @@ public class UI_Logic : MonoBehaviour {
         //Transfer Stuff
         DontDestroyOnLoad(UI_Manager);
 
-
+       
         //Display Seed
-        if(currentSeed == 0)
+        if (currentSeed == 0)
         {
             createRandomNumber();
         }
@@ -38,8 +38,8 @@ public class UI_Logic : MonoBehaviour {
     //Load Level
     public void changetoScene(int sceneNumber)
     {
-        print("Seed in old scene: " + currentSeed);
-            
+      
+
         SceneManager.LoadScene(sceneNumber);
     }
 

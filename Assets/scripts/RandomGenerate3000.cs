@@ -31,8 +31,7 @@ public class RandomGenerate3000 : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
-
-    	    
+   	    
         getSeedFromOldScene();
 		Random.seed = this.seed;
     

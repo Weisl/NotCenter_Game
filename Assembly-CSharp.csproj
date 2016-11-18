@@ -48,6 +48,7 @@
      <Compile Include="Assets\scripts\CameraMovement.cs" />
      <Compile Include="Assets\scripts\GameUI.cs" />
      <Compile Include="Assets\scripts\HighScoreCalculator.cs" />
+     <Compile Include="Assets\scripts\MystatsUI.cs" />
      <Compile Include="Assets\scripts\ObstacleMovement.cs" />
      <Compile Include="Assets\scripts\PlayerColloision.cs" />
      <Compile Include="Assets\scripts\PlayerMovement.cs" />
