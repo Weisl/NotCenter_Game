@@ -10,7 +10,7 @@ public class HighScoreCalculator : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		print ("Score " +  initialScore);
+	
 		this.initialScore +=  1 * Time.deltaTime;
 	}
 		

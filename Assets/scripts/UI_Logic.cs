@@ -11,8 +11,8 @@ public class UI_Logic : MonoBehaviour {
     public Button randomButton;
     public Button displayButton;
     public GameObject UI_Manager;
-  
 
+    public Text leaderboardText;
 
     void Start()
     {
@@ -32,6 +32,32 @@ public class UI_Logic : MonoBehaviour {
         {
             createRandomNumber();
         }
+      
+
+        //Create UserPrefs if necessary
+        if(PlayerPrefs.HasKey("Highscore") == false)
+        {
+            createLeaderBoard();
+         
+        }
+        updateDisplay();
+        
+
+
+    }
+
+
+    public void createLeaderBoard()
+    {
+
+        for(int i = 1; i < 4; i++)
+        {
+            PlayerPrefs.SetString("Player" + i, "Bob");
+            PlayerPrefs.SetFloat("Player" + i + "Score", 0.0f);
+            PlayerPrefs.SetInt("Player" + i + "Seed", 0);
+        }
+        print("Leaderboard created");
+        PlayerPrefs.SetInt("Highscore", 1);
         updateDisplay();
     }
         
@@ -72,11 +98,23 @@ public class UI_Logic : MonoBehaviour {
         Button dispBtn = displayButton.GetComponent<Button>();
         print(currentSeed);
         dispBtn.GetComponentInChildren<Text>().text = "Seed: " + currentSeed.ToString();
+        printHighscore();
     }
 
     public void printHighscore()
     {
 
+        Text txt  = leaderboardText.GetComponent<Text>();
+
+        
+        txt.text = "Player \t\t Score \t Seed \n\n";
+
+        for(int i = 1; i < 4; i++)
+        {
+            txt.text += PlayerPrefs.GetString("Player" + i) + "\t\t"+ PlayerPrefs.GetFloat("Player" + i + "Score") + "\t\t" + PlayerPrefs.GetInt("Player" + i + "Seed");
+            txt.text += "\n";
+
+        }
     }
     
     public int IntParseFast(string value)

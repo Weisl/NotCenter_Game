@@ -24,13 +24,15 @@ public class PlayerColloision : MonoBehaviour {
     {
 
         //Stop Score Counter
-        Canvas canvas = StatsUI_Canvas.GetComponent<Canvas>();
-        MystatsUI score_UI = canvas.GetComponent<MystatsUI>();
-        score_UI.stopScore();
-
+      
         // collisions with obstacles
         if (collision.gameObject.tag == "ObstacleTag"){
             //print("tot");
+            Canvas canvas = StatsUI_Canvas.GetComponent<Canvas>();
+            MystatsUI score_UI = canvas.GetComponent<MystatsUI>();
+            score_UI.stopScore();
+
+
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             GameUI ui = Game_UI.GetComponent<GameUI>();
             ui.startEndScreen();
@@ -39,8 +41,7 @@ public class PlayerColloision : MonoBehaviour {
 			// stop camera
 			CameraMovement cam = Camera.main.gameObject.GetComponent<CameraMovement>();
 			cam.stopCamera();
-			// print Highscore
-			//HighScoreCalculator.printScore();
+		
         }
         
         // collision with PowerUps
